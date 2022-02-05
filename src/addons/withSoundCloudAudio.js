@@ -16,9 +16,9 @@ export default function withSoundCloudAudio (WrappedComponent) {
     constructor(props, context) {
       super(props, context);
 
-      if (!props.clientId && !props.soundCloudAudio && !props.streamUrl) {
+      if (!props.token && !props.soundCloudAudio && !props.streamUrl) {
         console.warn(
-          `You need to get a clientId from SoundCloud,
+          `You need to get a token from SoundCloud,
           pass in an instance of SoundCloudAudio
           or use streamUrl with audio source instead
           https://github.com/soundblogs/react-soundplayer#examples`
@@ -31,7 +31,7 @@ export default function withSoundCloudAudio (WrappedComponent) {
         if (props.soundCloudAudio) {
           this.soundCloudAudio = props.soundCloudAudio;
         } else {
-          this.soundCloudAudio = new SoundCloudAudio(props.clientId);
+          this.soundCloudAudio = new SoundCloudAudio(props.token);
         }
       }
 

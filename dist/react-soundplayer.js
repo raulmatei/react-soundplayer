@@ -560,8 +560,8 @@ function withSoundCloudAudio(WrappedComponent) {
 
       var _this = _possibleConstructorReturn(this, (WithSoundCloudAudio.__proto__ || Object.getPrototypeOf(WithSoundCloudAudio)).call(this, props, context));
 
-      if (!props.clientId && !props.soundCloudAudio && !props.streamUrl) {
-        console.warn('You need to get a clientId from SoundCloud,\n          pass in an instance of SoundCloudAudio\n          or use streamUrl with audio source instead\n          https://github.com/soundblogs/react-soundplayer#examples');
+      if (!props.token && !props.soundCloudAudio && !props.streamUrl) {
+        console.warn('You need to get a token from SoundCloud,\n          pass in an instance of SoundCloudAudio\n          or use streamUrl with audio source instead\n          https://github.com/soundblogs/react-soundplayer#examples');
       }
 
       // Don't create a SoundCloudAudio instance
@@ -570,7 +570,7 @@ function withSoundCloudAudio(WrappedComponent) {
         if (props.soundCloudAudio) {
           _this.soundCloudAudio = props.soundCloudAudio;
         } else {
-          _this.soundCloudAudio = new _soundcloudAudio2.default(props.clientId);
+          _this.soundCloudAudio = new _soundcloudAudio2.default(props.token);
         }
       }
 
@@ -911,7 +911,7 @@ var SoundPlayerContainer = function (_Component) {
 SoundPlayerContainer.propTypes = {
   streamUrl: _propTypes2.default.string,
   resolveUrl: _propTypes2.default.string,
-  clientId: _propTypes2.default.string,
+  token: _propTypes2.default.string,
   soundCloudAudio: _propTypes2.default.instanceOf(_soundcloudAudio2.default),
   onStartTrack: _propTypes2.default.func,
   onStopTrack: _propTypes2.default.func,
